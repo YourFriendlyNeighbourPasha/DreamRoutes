@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
  *
  * @Autor: Pavel Shcherbatyi
  * @DateTime: 16.02.2022|19:51
- * @Version ShippingTask: 1.0
+ * @Version InternalShippingTask: 1.0
  */
 
 @Entity
@@ -22,8 +22,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class ShippingTask extends BaseModel {
+public class InternalShippingTask extends BaseModel {
 
     @OneToOne
     @JoinColumn(name = "route_id", nullable = false, updatable = false)
@@ -44,7 +43,7 @@ public class ShippingTask extends BaseModel {
     @Column(columnDefinition = "TIMESTAMP")
     private ZonedDateTime departureTime;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "shippingTask")
-    private ShippingTaskReport shippingTaskReport;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "internalShippingTask")
+    private InternalShippingTaskReport shippingTaskReport;
 
 }

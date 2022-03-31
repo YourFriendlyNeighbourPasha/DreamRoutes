@@ -13,11 +13,11 @@ import java.time.ZonedDateTime;
 
 /**
  * Created by IntelliJ IDEA.
- * dreamroutes.Accident
+ * dreamroutes.InternalAccident
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 16.02.2022|21:53
- * @Version Accident: 1.0
+ * @DateTime: 01.04.2022|00:58
+ * @Version InternalAccident: 1.0
  */
 
 @Entity
@@ -25,15 +25,15 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class Accident extends BaseModel {
-
-    @OneToOne
-    @JoinColumn(name = "origin_ship_task_id", nullable = false, updatable = false)
-    private ShippingTaskReport shippingTaskReport;
+public class InternalAccident extends BaseModel {
 
     private String description;
 
     @Column(columnDefinition = "TIMESTAMP")
     private ZonedDateTime happenedAt;
+
+    @OneToOne
+    @JoinColumn(name = "internal_ship_task_id", nullable = false, updatable = false)
+    private InternalShippingTaskReport internalShippingTaskReport;
 
 }

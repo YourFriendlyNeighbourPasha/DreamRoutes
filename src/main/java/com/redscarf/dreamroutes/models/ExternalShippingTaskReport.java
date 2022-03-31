@@ -13,11 +13,11 @@ import java.time.ZonedDateTime;
 
 /**
  * Created by IntelliJ IDEA.
- * dreamroutes.ShippingJobInfo
+ * dreamroutes.ExternalShippingTaskReport
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 11.02.2022|01:27
- * @Version ShippingJobInfo: 1.0
+ * @DateTime: 01.04.2022|00:39
+ * @Version ExternalShippingTaskReport: 1.0
  */
 
 @Entity
@@ -25,13 +25,13 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class ShippingTaskReport extends BaseModel {
-
-    @OneToOne
-    @JoinColumn(name = "shipping_task_id", nullable = false, updatable = false)
-    private ShippingTask shippingTask;
+public class ExternalShippingTaskReport extends BaseModel {
 
     @Column(columnDefinition = "TIMESTAMP")
     private ZonedDateTime destinationTime;
+
+    @OneToOne
+    @JoinColumn(name = "external_shipping_task_id", nullable = false, updatable = false)
+    private ExternalShippingTask externalShippingTask;
 
 }

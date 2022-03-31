@@ -40,6 +40,6 @@ public class Route extends BaseModel {
     @JoinColumn(name = "second_city_id", nullable = false, updatable = false)
     private City secondCity;
 
-    private int estimatedHours;
+    private long estimatedTime;
 
 }

@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.time.ZonedDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +14,7 @@ import javax.persistence.OneToOne;
  *
  * @Autor: Pavel Shcherbatyi
  * @DateTime: 16.02.2022|21:41
- * @Version ShippingTask: 1.0
+ * @Version ExternalShippingTask: 1.0
  */
 
 @Entity
@@ -23,10 +22,32 @@ import javax.persistence.OneToOne;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class ExternalShippingTask extends ShippingTask {
+public class ExternalShippingTask extends BaseModel {
+
+    @OneToOne
+    @JoinColumn(name = "route_id", nullable = false, updatable = false)
+    private Route route;
+
+    @OneToOne
+    @JoinColumn(name = "driver_id", nullable = false, updatable = false)
+    private Driver driver;
 
     @OneToOne
     @JoinColumn(name = "extra_driver_id", nullable = false, updatable = false)
     private Driver extraDriver;
+
+    @OneToOne
+    @JoinColumn(name = "vehicle_id", nullable = false, updatable = false)
+    private Vehicle vehicle;
+
+    @OneToOne
+    @JoinColumn(name = "freight_id", nullable = false, updatable = false)
+    private Freight freight;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private ZonedDateTime departureTime;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "externalShippingTask")
+    private ExternalShippingTaskReport shippingTaskReport;
 
 }

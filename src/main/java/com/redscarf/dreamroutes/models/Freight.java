@@ -1,10 +1,7 @@
 package com.redscarf.dreamroutes.models;
 
 import com.redscarf.dreamroutes.models.enums.FreightType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 
@@ -22,6 +19,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class Freight extends BaseModel {
 
     private double weight;

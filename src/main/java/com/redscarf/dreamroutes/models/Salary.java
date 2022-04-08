@@ -1,9 +1,6 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -24,6 +21,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class Salary extends BaseModel {
 
     private BigDecimal cost;

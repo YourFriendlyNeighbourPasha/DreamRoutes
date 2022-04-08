@@ -1,9 +1,6 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +22,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class ExternalShippingTaskReport extends BaseModel {
 
     @Column(columnDefinition = "TIMESTAMP")

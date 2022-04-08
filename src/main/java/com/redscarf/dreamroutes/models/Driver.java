@@ -1,12 +1,11 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 /**
@@ -23,6 +22,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class Driver extends BaseModel {
 
     private String firstName;
@@ -36,5 +36,8 @@ public class Driver extends BaseModel {
 
     @Column(columnDefinition = "DATE")
     private LocalDate employedOn;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "driver")
+    private DriverLicense driverLicense;
 
 }

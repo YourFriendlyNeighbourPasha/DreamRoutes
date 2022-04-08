@@ -1,16 +1,11 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,6 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class DriverLicense extends BaseModel {
 
     private long number;
@@ -36,11 +32,33 @@ public class DriverLicense extends BaseModel {
 
     private LocalDate expirationDate;
 
+    @OneToOne
+    @JoinColumn(name = "driver_id", nullable = false, updatable = false)
+    private Driver driver;
+
     @ManyToMany
     @JoinTable(
             name = "licenses_categories",
             joinColumns = @JoinColumn(name = "driver_license_id"),
             inverseJoinColumns = @JoinColumn(name = "driver_license_category_id"))
     private List<DriverLicenseCategory> driverLicenseCategories;
+
+    //region Specific Constructor
+
+    public DriverLicense(
+            UUID id,
+            long number,
+            int issuingAuthority,
+            LocalDate issuedAt,
+            LocalDate expirationDate
+    ) {
+        this.number = number;
+        this.issuingAuthority = issuingAuthority;
+        this.issuedAt = issuedAt;
+        this.expirationDate = expirationDate;
+    }
+
+
+    //endregion
 
 }

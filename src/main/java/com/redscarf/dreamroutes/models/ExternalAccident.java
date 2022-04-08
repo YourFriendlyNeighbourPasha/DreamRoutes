@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,5 +35,21 @@ public class ExternalAccident extends BaseModel {
     @JoinColumn(name = "external_ship_task_id", nullable = false, updatable = false)
     private ExternalShippingTaskReport externalShippingTaskReport;
 
+    //region Specific Constructor
+
+    @Builder
+    public ExternalAccident(
+            UUID id,
+            String description,
+            ZonedDateTime happenedAt,
+            ExternalShippingTaskReport externalShippingTaskReport
+    ) {
+        super(id);
+        this.description = description;
+        this.happenedAt = happenedAt;
+        this.externalShippingTaskReport = externalShippingTaskReport;
+    }
+
+    //endregion
 
 }

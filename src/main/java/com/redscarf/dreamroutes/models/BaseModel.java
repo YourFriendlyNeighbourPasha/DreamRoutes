@@ -35,4 +35,15 @@ public abstract class BaseModel {
     @Column(columnDefinition = "TIMESTAMP")
     private ZonedDateTime modifiedAt;
 
+    //region Contructors
+
+    public BaseModel() {
+    }
+
+    public BaseModel(UUID id) {
+        this.id = id;
+    }
+
+    //endregion
+
 }

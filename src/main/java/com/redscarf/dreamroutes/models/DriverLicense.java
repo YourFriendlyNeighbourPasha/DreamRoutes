@@ -45,6 +45,7 @@ public class DriverLicense extends BaseModel {
 
     //region Specific Constructor
 
+    @Builder
     public DriverLicense(
             UUID id,
             long number,
@@ -52,6 +53,7 @@ public class DriverLicense extends BaseModel {
             LocalDate issuedAt,
             LocalDate expirationDate
     ) {
+        super(id);
         this.number = number;
         this.issuingAuthority = issuingAuthority;
         this.issuedAt = issuedAt;

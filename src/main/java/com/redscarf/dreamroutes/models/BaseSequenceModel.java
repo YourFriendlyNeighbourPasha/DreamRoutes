@@ -22,7 +22,6 @@ import javax.persistence.MappedSuperclass;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public abstract class BaseSequenceModel {
 
     @Id

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,5 +44,26 @@ public class InternalShippingTask extends BaseModel {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "internalShippingTask")
     private InternalShippingTaskReport shippingTaskReport;
+
+    //region Specific Constructor
+
+    @Builder
+    public InternalShippingTask(
+            UUID id,
+            Route route,
+            Driver driver,
+            Vehicle vehicle,
+            Freight freight,
+            ZonedDateTime departureTime
+    ) {
+        super(id);
+        this.route = route;
+        this.driver = driver;
+        this.vehicle = vehicle;
+        this.freight = freight;
+        this.departureTime = departureTime;
+    }
+
+    //endregion
 
 }

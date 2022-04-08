@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,5 +40,28 @@ public class Route extends BaseModel {
     private City secondCity;
 
     private long estimatedTime;
+
+    //region Specific Constructor
+
+    @Builder
+    public Route(
+            UUID id,
+            String title,
+            float distance,
+            RouteType type,
+            City firstCity,
+            City secondCity,
+            long estimatedTime
+    ) {
+        super(id);
+        this.title = title;
+        this.distance = distance;
+        this.type = type;
+        this.firstCity = firstCity;
+        this.secondCity = secondCity;
+        this.estimatedTime = estimatedTime;
+    }
+
+    //endregion
 
 }

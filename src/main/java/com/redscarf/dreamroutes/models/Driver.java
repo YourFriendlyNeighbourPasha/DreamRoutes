@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,4 +41,26 @@ public class Driver extends BaseModel {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "driver")
     private DriverLicense driverLicense;
 
+    //region Specified Constructor
+
+    @Builder
+    public Driver(
+            UUID id,
+            String firstName,
+            String middleName,
+            String lastName,
+            LocalDate birthday,
+            LocalDate employedOn,
+            DriverLicense driverLicense
+    ) {
+        super(id);
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.employedOn = employedOn;
+        this.driverLicense = driverLicense;
+    }
+
+    //endregion
 }

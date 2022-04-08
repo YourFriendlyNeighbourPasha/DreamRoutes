@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
@@ -45,6 +46,7 @@ public class VehicleController {
                                .weightCapacity(vehicle.getWeightCapacity())
                                .build();
 
+        value.setCreatedAt(ZonedDateTime.now());
         return ResponseEntity.ok(service.save(value));
     }
 

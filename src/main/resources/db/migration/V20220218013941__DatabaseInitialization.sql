@@ -1,6 +1,6 @@
 create table country
 (
-    id   serial not null
+    id serial not null
         constraint country_pkey
             primary key,
     code varchar(255),
@@ -167,7 +167,6 @@ create table internal_accident
     description           varchar(255),
     happened_at           timestamp,
     internal_ship_task_id uuid not null
-        constraint fkrqqucgttbm2ubd7lg3mpcxn53
             references internal_shipping_task_report
 );
 
@@ -213,8 +212,7 @@ create table external_accident
     description           varchar(255),
     happened_at           timestamp,
     external_ship_task_id uuid not null
-        constraint fk44hwubda4xslqkdemcktx49dg
-            references external_shipping_task_report
+        references external_shipping_task_report
 );
 
 -- ASSIGNING OWNER TO SCHEMAS

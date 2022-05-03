@@ -1,6 +1,5 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,15 +27,5 @@ public class DriverLicenseCategory extends BaseSequenceModel {
 
     @ManyToMany(mappedBy = "driverLicenseCategories")
     private List<DriverLicense> driverLicenses;
-
-    //region Specified Constructor for Lombok @Builder
-
-    @Builder
-    public DriverLicenseCategory(Integer id, String code) {
-        super(id);
-        this.code = code;
-    }
-
-    //endregion
 
 }

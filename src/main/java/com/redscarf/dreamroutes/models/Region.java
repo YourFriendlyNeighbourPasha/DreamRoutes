@@ -1,6 +1,5 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,14 +31,4 @@ public class Region extends BaseSequenceModel {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
     private List<City> cities;
 
-    //region Specified Constructor for Lombok @Builder
-
-    @Builder
-    public Region(Integer id, String name, Country country) {
-        super(id);
-        this.name = name;
-        this.country = country;
-    }
-
-    //endregion
 }

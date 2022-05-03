@@ -5,8 +5,7 @@ import com.redscarf.dreamroutes.repositories.interfaces.sequences.CityRepository
 import com.redscarf.dreamroutes.services.generics.impls.GenericSequenceServiceImpl;
 import com.redscarf.dreamroutes.services.interfaces.sequences.CityService;
 import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.

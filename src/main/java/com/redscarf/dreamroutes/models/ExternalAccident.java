@@ -2,12 +2,10 @@ package com.redscarf.dreamroutes.models;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import java.time.ZonedDateTime;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,28 +26,10 @@ public class ExternalAccident extends BaseModel {
 
     private String description;
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime happenedAt;
+    private LocalDateTime happenedAt;
 
     @OneToOne
     @JoinColumn(name = "external_ship_task_id", nullable = false, updatable = false)
     private ExternalShippingTaskReport externalShippingTaskReport;
-
-    //region Specific Constructor
-
-    @Builder
-    public ExternalAccident(
-            UUID id,
-            String description,
-            ZonedDateTime happenedAt,
-            ExternalShippingTaskReport externalShippingTaskReport
-    ) {
-        super(id);
-        this.description = description;
-        this.happenedAt = happenedAt;
-        this.externalShippingTaskReport = externalShippingTaskReport;
-    }
-
-    //endregion
 
 }

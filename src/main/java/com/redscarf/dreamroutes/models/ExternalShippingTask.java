@@ -2,9 +2,11 @@ package com.redscarf.dreamroutes.models;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.time.ZonedDateTime;
-import java.util.UUID;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,33 +45,9 @@ public class ExternalShippingTask extends BaseModel {
     @JoinColumn(name = "freight_id", nullable = false, updatable = false)
     private Freight freight;
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime departureTime;
+    private LocalDateTime departureTime;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "externalShippingTask")
     private ExternalShippingTaskReport shippingTaskReport;
-
-    //region Specific Constructor
-
-    @Builder
-    public ExternalShippingTask(
-            UUID id,
-            Route route,
-            Driver driver,
-            Driver extraDriver,
-            Vehicle vehicle,
-            Freight freight,
-            ZonedDateTime departureTime
-    ) {
-        super(id);
-        this.route = route;
-        this.driver = driver;
-        this.extraDriver = extraDriver;
-        this.vehicle = vehicle;
-        this.freight = freight;
-        this.departureTime = departureTime;
-    }
-    //endregion
-
 
 }

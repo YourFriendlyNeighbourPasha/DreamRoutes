@@ -14,7 +14,7 @@ spring:
   flyway:
     user: postgres
     password: postgres
-    enabled: true
+    enabled: false
 
 server:
   port: 8082

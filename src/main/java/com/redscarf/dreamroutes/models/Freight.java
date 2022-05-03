@@ -4,7 +4,6 @@ import com.redscarf.dreamroutes.models.enums.FreightType;
 import lombok.*;
 
 import javax.persistence.Entity;
-import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,22 +27,5 @@ public class Freight extends BaseModel {
     private FreightType type;
 
     private String description;
-
-    //region Specified Constructor
-
-    @Builder
-    public Freight(
-            UUID id,
-            double weight,
-            FreightType type,
-            String description
-    ) {
-        super(id);
-        this.weight = weight;
-        this.type = type;
-        this.description = description;
-    }
-
-    //endregion
 
 }

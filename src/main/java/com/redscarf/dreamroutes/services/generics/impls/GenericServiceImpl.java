@@ -20,7 +20,11 @@ import java.util.UUID;
 
 public class GenericServiceImpl<T extends BaseModel> implements GenericService<T> {
 
-    protected GenericRepository<T> repository;
+    protected final GenericRepository<T> repository;
+
+    public GenericServiceImpl(GenericRepository<T> repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Page<T> findAll(Integer pageNumber, Integer pageSize) {

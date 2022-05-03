@@ -3,7 +3,6 @@ package com.redscarf.dreamroutes.models;
 import lombok.*;
 
 import javax.persistence.Entity;
-import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,24 +28,5 @@ public class Vehicle extends BaseModel {
     private String vehicleCode;
 
     private double weightCapacity;
-
-    //region Specific Constructor
-
-    @Builder
-    public Vehicle(
-            UUID id,
-            String manufacturerTitle,
-            String model,
-            String vehicleCode,
-            double weightCapacity
-    ) {
-        super(id);
-        this.manufacturerTitle = manufacturerTitle;
-        this.model = model;
-        this.vehicleCode = vehicleCode;
-        this.weightCapacity = weightCapacity;
-    }
-
-    //endregion
 
 }

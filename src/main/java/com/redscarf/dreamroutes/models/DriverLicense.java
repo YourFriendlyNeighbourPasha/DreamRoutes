@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,25 +41,5 @@ public class DriverLicense extends BaseModel {
             joinColumns = @JoinColumn(name = "driver_license_id"),
             inverseJoinColumns = @JoinColumn(name = "driver_license_category_id"))
     private List<DriverLicenseCategory> driverLicenseCategories;
-
-    //region Specific Constructor
-
-    @Builder
-    public DriverLicense(
-            UUID id,
-            long number,
-            int issuingAuthority,
-            LocalDate issuedAt,
-            LocalDate expirationDate
-    ) {
-        super(id);
-        this.number = number;
-        this.issuingAuthority = issuingAuthority;
-        this.issuedAt = issuedAt;
-        this.expirationDate = expirationDate;
-    }
-
-
-    //endregion
 
 }

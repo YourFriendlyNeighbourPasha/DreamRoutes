@@ -1,13 +1,10 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 
 /**
@@ -24,13 +21,14 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class Salary extends BaseModel {
 
     private BigDecimal cost;
 
     private BigDecimal bonusCost;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "driver_id", updatable = false, nullable = false)
     private Driver driver;
 

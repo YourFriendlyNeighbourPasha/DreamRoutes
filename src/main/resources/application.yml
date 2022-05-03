@@ -1,15 +1,19 @@
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/dreamroutes-db
     username: postgres
     password: postgres
   flyway:
+    user: postgres
+    password: postgres
     enabled: false
 
 server:

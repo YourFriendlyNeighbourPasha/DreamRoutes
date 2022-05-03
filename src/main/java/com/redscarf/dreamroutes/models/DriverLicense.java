@@ -1,14 +1,8 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,6 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class DriverLicense extends BaseModel {
 
     private long number;
@@ -35,6 +30,10 @@ public class DriverLicense extends BaseModel {
     private LocalDate issuedAt;
 
     private LocalDate expirationDate;
+
+    @OneToOne
+    @JoinColumn(name = "driver_id", nullable = false, updatable = false)
+    private Driver driver;
 
     @ManyToMany
     @JoinTable(

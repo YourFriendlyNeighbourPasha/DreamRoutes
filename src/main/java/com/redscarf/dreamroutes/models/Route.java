@@ -1,10 +1,7 @@
 package com.redscarf.dreamroutes.models;
 
 import com.redscarf.dreamroutes.models.enums.RouteType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -24,6 +21,7 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class Route extends BaseModel {
 
     private String title;

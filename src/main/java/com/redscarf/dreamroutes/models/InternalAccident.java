@@ -1,11 +1,7 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,11 +21,11 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class InternalAccident extends BaseModel {
 
     private String description;
 
-    @Column(columnDefinition = "TIMESTAMP")
     private ZonedDateTime happenedAt;
 
     @OneToOne

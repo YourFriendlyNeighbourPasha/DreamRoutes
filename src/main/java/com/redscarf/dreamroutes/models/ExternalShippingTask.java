@@ -1,12 +1,12 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.*;
-import java.time.ZonedDateTime;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,6 +22,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class ExternalShippingTask extends BaseModel {
 
     @OneToOne
@@ -44,8 +45,7 @@ public class ExternalShippingTask extends BaseModel {
     @JoinColumn(name = "freight_id", nullable = false, updatable = false)
     private Freight freight;
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime departureTime;
+    private LocalDateTime departureTime;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "externalShippingTask")
     private ExternalShippingTaskReport shippingTaskReport;

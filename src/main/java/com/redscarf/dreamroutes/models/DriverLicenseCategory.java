@@ -1,8 +1,11 @@
 package com.redscarf.dreamroutes.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.List;
 
 /**
@@ -14,13 +17,11 @@ import java.util.List;
  * @Version DriverLicenseCategory: 1.0
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class DriverLicenseCategory {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Byte id;
+@NoArgsConstructor
+public class DriverLicenseCategory extends BaseSequenceModel {
 
     private String code;
 

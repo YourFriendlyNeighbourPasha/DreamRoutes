@@ -1,8 +1,12 @@
 package com.redscarf.dreamroutes.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
@@ -14,13 +18,11 @@ import java.util.List;
  * @Version Country: 1.0
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Country {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Short id;
+@NoArgsConstructor
+public class Country extends BaseSequenceModel {
 
     private String name;
 
@@ -28,4 +30,5 @@ public class Country {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     private List<Region> regions;
+
 }

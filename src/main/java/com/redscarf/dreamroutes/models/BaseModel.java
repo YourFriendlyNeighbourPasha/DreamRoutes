@@ -1,12 +1,14 @@
 package com.redscarf.dreamroutes.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -20,19 +22,27 @@ import java.util.UUID;
 
 @MappedSuperclass
 @Data
+@EqualsAndHashCode
+@ToString
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    protected UUID id;
+
+    //@CreatedBy
+    //@Column(updatable = false)
+    //protected String createdBy;
 
     @CreatedDate
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime createdAt;
+    @Column(updatable = false)
+    protected LocalDateTime createdAt;
+
+    //@LastModifiedBy
+    //protected String modifiedBy;
 
     @LastModifiedDate
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime modifiedAt;
+    protected LocalDateTime modifiedAt;
 
 }

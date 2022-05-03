@@ -1,15 +1,11 @@
 package com.redscarf.dreamroutes.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,10 +21,10 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NoArgsConstructor
 public class ExternalShippingTaskReport extends BaseModel {
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private ZonedDateTime destinationTime;
+    private LocalDateTime destinationTime;
 
     @OneToOne
     @JoinColumn(name = "external_shipping_task_id", nullable = false, updatable = false)

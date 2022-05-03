@@ -1,8 +1,12 @@
 package com.redscarf.dreamroutes.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,18 +17,14 @@ import javax.persistence.*;
  * @Version City: 1.0
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class City {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+@NoArgsConstructor
+public class City extends BaseSequenceModel {
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "region_id", nullable = false, updatable = false)
     private Region region;
-
 }

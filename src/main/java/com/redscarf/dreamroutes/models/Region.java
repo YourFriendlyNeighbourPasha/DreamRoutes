@@ -1,6 +1,8 @@
 package com.redscarf.dreamroutes.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,13 +16,11 @@ import java.util.List;
  * @Version Region: 1.0
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Region {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@NoArgsConstructor
+public class Region extends BaseSequenceModel {
 
     private String name;
 
@@ -30,4 +30,5 @@ public class Region {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
     private List<City> cities;
+
 }

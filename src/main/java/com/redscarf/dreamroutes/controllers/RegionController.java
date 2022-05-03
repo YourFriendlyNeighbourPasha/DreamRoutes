@@ -36,23 +36,12 @@ public class RegionController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Region> create(@RequestBody Region region) {
-        Region value = Region.builder()
-                             .name(region.getName())
-                             .country(region.getCountry())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(region));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Region> update(@RequestBody Region region) {
-        Region value = Region.builder()
-                             .id(region.getId())
-                             .name(region.getName())
-                             .country(region.getCountry())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(region));
     }
 
     @DeleteMapping(value = "/delete")

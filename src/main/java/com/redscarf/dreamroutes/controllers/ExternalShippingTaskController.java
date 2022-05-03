@@ -37,36 +37,20 @@ public class ExternalShippingTaskController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<ExternalShippingTask> create(@RequestBody ExternalShippingTask externalShippingTask) {
-        ExternalShippingTask value = ExternalShippingTask.builder()
-                                                         .vehicle(externalShippingTask.getVehicle())
-                                                         .route(externalShippingTask.getRoute())
-                                                         .freight(externalShippingTask.getFreight())
-                                                         .extraDriver(externalShippingTask.getExtraDriver())
-                                                         .driver(externalShippingTask.getDriver())
-                                                         .departureTime(externalShippingTask.getDepartureTime())
-                                                         .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<ExternalShippingTask> create(
+            @RequestBody ExternalShippingTask externalShippingTask) {
+        return ResponseEntity.ok(service.save(externalShippingTask));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<ExternalShippingTask> update(@RequestBody ExternalShippingTask externalShippingTask) {
-        ExternalShippingTask value = ExternalShippingTask.builder()
-                                                         .id(externalShippingTask.getId())
-                                                         .vehicle(externalShippingTask.getVehicle())
-                                                         .route(externalShippingTask.getRoute())
-                                                         .freight(externalShippingTask.getFreight())
-                                                         .extraDriver(externalShippingTask.getExtraDriver())
-                                                         .driver(externalShippingTask.getDriver())
-                                                         .departureTime(externalShippingTask.getDepartureTime())
-                                                         .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<ExternalShippingTask> update(
+            @RequestBody ExternalShippingTask externalShippingTask) {
+        return ResponseEntity.ok(service.save(externalShippingTask));
     }
 
     @DeleteMapping(value = "/delete")
-    public ResponseEntity<Boolean> delete(@RequestBody ExternalShippingTask externalShippingTask) {
+    public ResponseEntity<Boolean> delete(
+            @RequestBody ExternalShippingTask externalShippingTask) {
         return ResponseEntity.ok(service.delete(externalShippingTask));
     }
 

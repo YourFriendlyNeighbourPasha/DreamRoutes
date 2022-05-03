@@ -38,29 +38,12 @@ public class InternalShippingTaskController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<InternalShippingTask> create(@RequestBody InternalShippingTask internalShippingTask) {
-        InternalShippingTask value = InternalShippingTask.builder()
-                                                         .vehicle(internalShippingTask.getVehicle())
-                                                         .route(internalShippingTask.getRoute())
-                                                         .freight(internalShippingTask.getFreight())
-                                                         .driver(internalShippingTask.getDriver())
-                                                         .departureTime(internalShippingTask.getDepartureTime())
-                                                         .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalShippingTask));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<InternalShippingTask> update(@RequestBody InternalShippingTask internalShippingTask) {
-        InternalShippingTask value = InternalShippingTask.builder()
-                                                         .id(internalShippingTask.getId())
-                                                         .vehicle(internalShippingTask.getVehicle())
-                                                         .route(internalShippingTask.getRoute())
-                                                         .freight(internalShippingTask.getFreight())
-                                                         .driver(internalShippingTask.getDriver())
-                                                         .departureTime(internalShippingTask.getDepartureTime())
-                                                         .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalShippingTask));
     }
 
     @DeleteMapping(value = "/delete")

@@ -38,23 +38,12 @@ public class InternalShippingTaskReportController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<InternalShippingTaskReport> create(@RequestBody InternalShippingTaskReport internalShippingTaskReport) {
-        InternalShippingTaskReport value = InternalShippingTaskReport.builder()
-                                                                     .destinationTime(internalShippingTaskReport.getDestinationTime())
-                                                                     .internalShippingTask(internalShippingTaskReport.getInternalShippingTask())
-                                                                     .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalShippingTaskReport));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<InternalShippingTaskReport> update(@RequestBody InternalShippingTaskReport internalShippingTaskReport) {
-        InternalShippingTaskReport value = InternalShippingTaskReport.builder()
-                                                                     .id(internalShippingTaskReport.getId())
-                                                                     .destinationTime(internalShippingTaskReport.getDestinationTime())
-                                                                     .internalShippingTask(internalShippingTaskReport.getInternalShippingTask())
-                                                                     .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalShippingTaskReport));
     }
 
     @DeleteMapping(value = "/delete")

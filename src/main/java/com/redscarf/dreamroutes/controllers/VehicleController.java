@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
@@ -39,28 +38,12 @@ public class VehicleController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Vehicle> create(@RequestBody Vehicle vehicle) {
-        Vehicle value = Vehicle.builder()
-                               .manufacturerTitle(vehicle.getManufacturerTitle())
-                               .model(vehicle.getModel())
-                               .vehicleCode(vehicle.getVehicleCode())
-                               .weightCapacity(vehicle.getWeightCapacity())
-                               .build();
-
-        value.setCreatedAt(ZonedDateTime.now());
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(vehicle));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Vehicle> update(@RequestBody Vehicle vehicle) {
-        Vehicle value = Vehicle.builder()
-                               .id(vehicle.getId())
-                               .manufacturerTitle(vehicle.getManufacturerTitle())
-                               .model(vehicle.getModel())
-                               .vehicleCode(vehicle.getVehicleCode())
-                               .weightCapacity(vehicle.getWeightCapacity())
-                               .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(vehicle));
     }
 
     @DeleteMapping(value = "/delete")

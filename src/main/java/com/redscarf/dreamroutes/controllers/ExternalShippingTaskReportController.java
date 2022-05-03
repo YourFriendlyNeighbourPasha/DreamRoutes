@@ -37,24 +37,15 @@ public class ExternalShippingTaskReportController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<ExternalShippingTaskReport> create(@RequestBody ExternalShippingTaskReport externalShippingTaskReport) {
-        ExternalShippingTaskReport value = ExternalShippingTaskReport.builder()
-                                                                     .destinationTime(externalShippingTaskReport.getDestinationTime())
-                                                                     .externalShippingTask(externalShippingTaskReport.getExternalShippingTask())
-                                                                     .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<ExternalShippingTaskReport> create(
+            @RequestBody ExternalShippingTaskReport externalShippingTaskReport) {
+        return ResponseEntity.ok(service.save(externalShippingTaskReport));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<ExternalShippingTaskReport> update(@RequestBody ExternalShippingTaskReport externalShippingTaskReport) {
-        ExternalShippingTaskReport value = ExternalShippingTaskReport.builder()
-                                                                     .id(externalShippingTaskReport.getId())
-                                                                     .destinationTime(externalShippingTaskReport.getDestinationTime())
-                                                                     .externalShippingTask(externalShippingTaskReport.getExternalShippingTask())
-                                                                     .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<ExternalShippingTaskReport> update(
+            @RequestBody ExternalShippingTaskReport externalShippingTaskReport) {
+        return ResponseEntity.ok(service.save(externalShippingTaskReport));
     }
 
     @DeleteMapping(value = "/delete")

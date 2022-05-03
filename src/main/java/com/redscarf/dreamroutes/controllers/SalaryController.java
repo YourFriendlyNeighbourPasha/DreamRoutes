@@ -38,25 +38,12 @@ public class SalaryController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Salary> create(@RequestBody Salary salary) {
-        Salary value = Salary.builder()
-                             .driver(salary.getDriver())
-                             .cost(salary.getCost())
-                             .bonusCost(salary.getBonusCost())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(salary));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Salary> update(@RequestBody Salary salary) {
-        Salary value = Salary.builder()
-                             .id(salary.getId())
-                             .driver(salary.getDriver())
-                             .cost(salary.getCost())
-                             .bonusCost(salary.getBonusCost())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(salary));
     }
 
     @DeleteMapping(value = "/delete")

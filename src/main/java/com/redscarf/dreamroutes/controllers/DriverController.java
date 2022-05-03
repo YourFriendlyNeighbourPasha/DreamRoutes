@@ -38,30 +38,12 @@ public class DriverController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Driver> create(@RequestBody Driver driver) {
-
-        Driver value = Driver.builder()
-                             .firstName(driver.getFirstName())
-                             .middleName(driver.getMiddleName())
-                             .lastName(driver.getLastName())
-                             .birthday(driver.getBirthday())
-                             .employedOn(driver.getEmployedOn())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(driver));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Driver> update(@RequestBody Driver driver) {
-        Driver value = Driver.builder()
-                             .id(driver.getId())
-                             .firstName(driver.getFirstName())
-                             .middleName(driver.getMiddleName())
-                             .lastName(driver.getLastName())
-                             .birthday(driver.getBirthday())
-                             .employedOn(driver.getEmployedOn())
-                             .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(driver));
     }
 
     @DeleteMapping(value = "/delete")

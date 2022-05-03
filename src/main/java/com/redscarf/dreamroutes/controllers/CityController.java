@@ -36,23 +36,13 @@ public class CityController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<City> create(@RequestBody City city) {
-        City value = City.builder()
-                         .name(city.getName())
-                         .region(city.getRegion())
-                         .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(city));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<City> update(@RequestBody City city) {
-        City value = City.builder()
-                         .id(city.getId())
-                         .name(city.getName())
-                         .region(city.getRegion())
-                         .build();
 
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(city));
     }
 
     @DeleteMapping(value = "/delete")

@@ -38,31 +38,12 @@ public class RouteController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Route> create(@RequestBody Route route) {
-        Route value = Route.builder()
-                           .title(route.getTitle())
-                           .type(route.getType())
-                           .distance(route.getDistance())
-                           .firstCity(route.getFirstCity())
-                           .secondCity(route.getSecondCity())
-                           .estimatedTime(route.getEstimatedTime())
-                           .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(route));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Route> update(@RequestBody Route route) {
-        Route value = Route.builder()
-                           .id(route.getId())
-                           .title(route.getTitle())
-                           .type(route.getType())
-                           .distance(route.getDistance())
-                           .firstCity(route.getFirstCity())
-                           .secondCity(route.getSecondCity())
-                           .estimatedTime(route.getEstimatedTime())
-                           .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(route));
     }
 
     @DeleteMapping(value = "/delete")

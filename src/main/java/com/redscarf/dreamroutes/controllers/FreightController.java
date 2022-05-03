@@ -38,25 +38,12 @@ public class FreightController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<Freight> create(@RequestBody Freight freight) {
-        Freight value = Freight.builder()
-                               .weight(freight.getWeight())
-                               .type(freight.getType())
-                               .description(freight.getDescription())
-                               .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(freight));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<Freight> update(@RequestBody Freight freight) {
-        Freight value = Freight.builder()
-                               .id(freight.getId())
-                               .weight(freight.getWeight())
-                               .type(freight.getType())
-                               .description(freight.getDescription())
-                               .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(freight));
     }
 
     @DeleteMapping(value = "/delete")

@@ -38,25 +38,12 @@ public class InternalAccidentController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<InternalAccident> create(@RequestBody InternalAccident internalAccident) {
-        InternalAccident value = InternalAccident.builder()
-                                                 .happenedAt(internalAccident.getHappenedAt())
-                                                 .description(internalAccident.getDescription())
-                                                 .internalShippingTaskReport(internalAccident.getInternalShippingTaskReport())
-                                                 .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalAccident));
     }
 
     @PutMapping(value = "/update")
     public ResponseEntity<InternalAccident> update(@RequestBody InternalAccident internalAccident) {
-        InternalAccident value = InternalAccident.builder()
-                                                 .id(internalAccident.getId())
-                                                 .happenedAt(internalAccident.getHappenedAt())
-                                                 .description(internalAccident.getDescription())
-                                                 .internalShippingTaskReport(internalAccident.getInternalShippingTaskReport())
-                                                 .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(internalAccident));
     }
 
     @DeleteMapping(value = "/delete")

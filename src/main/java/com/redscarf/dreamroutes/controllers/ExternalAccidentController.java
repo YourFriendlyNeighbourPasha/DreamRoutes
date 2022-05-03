@@ -38,25 +38,14 @@ public class ExternalAccidentController {
 
     @PostMapping(value = "/create")
     public ResponseEntity<ExternalAccident> create(@RequestBody ExternalAccident externalAccident) {
-        ExternalAccident value = ExternalAccident.builder()
-                                                 .happenedAt(externalAccident.getHappenedAt())
-                                                 .externalShippingTaskReport(externalAccident.getExternalShippingTaskReport())
-                                                 .description(externalAccident.getDescription())
-                                                 .build();
-
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(externalAccident));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<ExternalAccident> update(@RequestBody ExternalAccident externalAccident) {
-        ExternalAccident value = ExternalAccident.builder()
-                                                 .id(externalAccident.getId())
-                                                 .happenedAt(externalAccident.getHappenedAt())
-                                                 .externalShippingTaskReport(externalAccident.getExternalShippingTaskReport())
-                                                 .description(externalAccident.getDescription())
-                                                 .build();
+    public ResponseEntity<ExternalAccident> update(
+            @RequestBody ExternalAccident externalAccident) {
 
-        return ResponseEntity.ok(service.save(value));
+        return ResponseEntity.ok(service.save(externalAccident));
     }
 
     @DeleteMapping(value = "/delete")

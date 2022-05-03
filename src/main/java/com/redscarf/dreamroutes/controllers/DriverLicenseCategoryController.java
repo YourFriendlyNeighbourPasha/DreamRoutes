@@ -35,22 +35,15 @@ public class DriverLicenseCategoryController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<DriverLicenseCategory> create(@RequestBody DriverLicenseCategory driverLicenseCategory) {
-        DriverLicenseCategory value = DriverLicenseCategory.builder()
-                                                           .code(driverLicenseCategory.getCode())
-                                                           .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<DriverLicenseCategory> create(
+            @RequestBody DriverLicenseCategory driverLicenseCategory) {
+        return ResponseEntity.ok(service.save(driverLicenseCategory));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<DriverLicenseCategory> update(@RequestBody DriverLicenseCategory driverLicenseCategory) {
-        DriverLicenseCategory value = DriverLicenseCategory.builder()
-                                                           .id(driverLicenseCategory.getId())
-                                                           .code(driverLicenseCategory.getCode())
-                                                           .build();
-
-        return ResponseEntity.ok(service.save(value));
+    public ResponseEntity<DriverLicenseCategory> update(
+            @RequestBody DriverLicenseCategory driverLicenseCategory) {
+        return ResponseEntity.ok(service.save(driverLicenseCategory));
     }
 
     @DeleteMapping(value = "/delete")

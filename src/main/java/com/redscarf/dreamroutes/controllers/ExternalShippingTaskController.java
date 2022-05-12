@@ -1,19 +1,22 @@
 package com.redscarf.dreamroutes.controllers;
 
-import com.redscarf.dreamroutes.models.ExternalShippingTask;
+import com.redscarf.dreamroutes.dto.externalshippingtask.ExternalShippingTaskCreateDto;
+import com.redscarf.dreamroutes.dto.externalshippingtask.ExternalShippingTaskDto;
+import com.redscarf.dreamroutes.mappers.interfaces.ExternalShippingTaskMapper;
 import com.redscarf.dreamroutes.services.interfaces.ExternalShippingTaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
  * dreamroutes.ExternalShippingTaskController
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 08.04.2022|03:24
  * @Version ExternalShippingTaskController: 1.0
  */
@@ -24,44 +27,47 @@ import java.util.UUID;
 public class ExternalShippingTaskController {
 
     private final ExternalShippingTaskService service;
+    private final ExternalShippingTaskMapper mapper;
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<Page<ExternalShippingTask>> getAll(@RequestParam Integer pageNumber,
-                                                             @RequestParam Integer pageSize) {
-        return ResponseEntity.ok(service.findAll(pageNumber, pageSize));
+    public ResponseEntity<Page<ExternalShippingTaskDto>> getAll(@RequestParam Integer pageNumber,
+                                                                @RequestParam Integer pageSize) {
+        var response = service.findAll(pageNumber, pageSize)
+                              .map(mapper::fromEntityToDto);
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/getById/{id}")
-    public ResponseEntity<ExternalShippingTask> getById(@PathVariable String id) {
-        return ResponseEntity.ok(service.findById(UUID.fromString(id)));
+    public ResponseEntity<ExternalShippingTaskDto> getById(@PathVariable String id) {
+        return ResponseEntity.ok(mapper.fromEntityToDto(service.findById(UUID.fromString(id))));
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<ExternalShippingTask> create(
-            @RequestBody ExternalShippingTask externalShippingTask) {
-        return ResponseEntity.ok(service.save(externalShippingTask));
+    public ResponseEntity<ExternalShippingTaskDto> create(
+            @RequestBody @Valid ExternalShippingTaskCreateDto externalShippingTask) {
+        var saved = service.save(mapper.fromCreateDtoToEntity(externalShippingTask));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(saved));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<ExternalShippingTask> update(
-            @RequestBody ExternalShippingTask externalShippingTask) {
-        return ResponseEntity.ok(service.save(externalShippingTask));
+    public ResponseEntity<ExternalShippingTaskDto> update(
+            @RequestBody ExternalShippingTaskDto externalShippingTask) {
+        var updated = service.save(mapper.fromDtoToEntity(externalShippingTask));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(updated));
     }
 
     @DeleteMapping(value = "/delete")
     public ResponseEntity<Boolean> delete(
-            @RequestBody ExternalShippingTask externalShippingTask) {
-        return ResponseEntity.ok(service.delete(externalShippingTask));
+            @RequestBody ExternalShippingTaskDto externalShippingTask) {
+        return ResponseEntity.ok(service.delete(mapper.fromDtoToEntity(externalShippingTask)));
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable String id) {
         return ResponseEntity.ok(service.deleteById(UUID.fromString(id)));
-    }
-
-    @GetMapping(value = "/count")
-    public ResponseEntity<Long> count() {
-        return ResponseEntity.ok(service.count());
     }
 
 }

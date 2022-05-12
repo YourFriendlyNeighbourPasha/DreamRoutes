@@ -1,19 +1,22 @@
 package com.redscarf.dreamroutes.controllers;
 
-import com.redscarf.dreamroutes.models.InternalAccident;
+import com.redscarf.dreamroutes.dto.internalaccident.InternalAccidentCreateDto;
+import com.redscarf.dreamroutes.dto.internalaccident.InternalAccidentDto;
+import com.redscarf.dreamroutes.mappers.interfaces.InternalAccidentMapper;
 import com.redscarf.dreamroutes.services.interfaces.InternalAccidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
  * dreamroutes.InternalAccidentController
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 08.04.2022|03:25
  * @Version InternalAccidentController: 1.0
  */
@@ -24,41 +27,46 @@ import java.util.UUID;
 public class InternalAccidentController {
 
     private final InternalAccidentService service;
+    private final InternalAccidentMapper mapper;
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<Page<InternalAccident>> getAll(@RequestParam Integer pageNumber,
-                                                         @RequestParam Integer pageSize) {
-        return ResponseEntity.ok(service.findAll(pageNumber, pageSize));
+    public ResponseEntity<Page<InternalAccidentDto>> getAll(@RequestParam Integer pageNumber,
+                                                            @RequestParam Integer pageSize) {
+        var response = service.findAll(pageNumber, pageSize)
+                              .map(mapper::fromEntityToDto);
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/getById/{id}")
-    public ResponseEntity<InternalAccident> getById(@PathVariable String id) {
-        return ResponseEntity.ok(service.findById(UUID.fromString(id)));
+    public ResponseEntity<InternalAccidentDto> getById(@PathVariable String id) {
+        return ResponseEntity.ok(mapper.fromEntityToDto(service.findById(UUID.fromString(id))));
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<InternalAccident> create(@RequestBody InternalAccident internalAccident) {
-        return ResponseEntity.ok(service.save(internalAccident));
+    public ResponseEntity<InternalAccidentDto> create(
+            @RequestBody @Valid InternalAccidentCreateDto internalAccident) {
+        var saved = service.save(mapper.fromCreateDtoToEntity(internalAccident));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(saved));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<InternalAccident> update(@RequestBody InternalAccident internalAccident) {
-        return ResponseEntity.ok(service.save(internalAccident));
+    public ResponseEntity<InternalAccidentDto> update(@RequestBody @Valid InternalAccidentDto internalAccident) {
+        var updated = service.save(mapper.fromDtoToEntity(internalAccident));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(updated));
     }
 
     @DeleteMapping(value = "/delete")
-    public ResponseEntity<Boolean> delete(@RequestBody InternalAccident internalAccident) {
-        return ResponseEntity.ok(service.delete(internalAccident));
+    public ResponseEntity<Boolean> delete(
+            @RequestBody @Valid InternalAccidentDto internalAccident) {
+        return ResponseEntity.ok(service.delete(mapper.fromDtoToEntity(internalAccident)));
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable String id) {
         return ResponseEntity.ok(service.deleteById(UUID.fromString(id)));
-    }
-
-    @GetMapping(value = "/count")
-    public ResponseEntity<Long> count() {
-        return ResponseEntity.ok(service.count());
     }
 
 }

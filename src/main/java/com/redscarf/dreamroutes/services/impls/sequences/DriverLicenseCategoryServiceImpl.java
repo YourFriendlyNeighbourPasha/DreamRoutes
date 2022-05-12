@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by IntelliJ IDEA.
  * dreamroutes.DriverLicenseCategoryServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|03:18
  * @Version DriverLicenseCategoryServiceImpl: 1.0
  */

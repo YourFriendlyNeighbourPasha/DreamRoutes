@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
  * Created by IntelliJ IDEA.
  * dreamroutes.GenericSequenceService
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|02:39
  * @Version GenericSequenceService: 1.0
  */
@@ -23,7 +23,5 @@ public interface GenericSequenceService<T extends BaseSequenceModel> {
     Boolean delete(T entity);
 
     Boolean deleteById(Integer id);
-
-    long count();
 
 }

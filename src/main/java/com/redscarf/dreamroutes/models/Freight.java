@@ -9,7 +9,7 @@ import javax.persistence.Entity;
  * Created by IntelliJ IDEA.
  * dreamroutes.Freight
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 11.02.2022|01:30
  * @Version Freight: 1.0
  */

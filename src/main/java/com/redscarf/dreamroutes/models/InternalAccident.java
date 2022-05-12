@@ -5,13 +5,13 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
  * dreamroutes.InternalAccident
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|00:58
  * @Version InternalAccident: 1.0
  */
@@ -26,7 +26,7 @@ public class InternalAccident extends BaseModel {
 
     private String description;
 
-    private ZonedDateTime happenedAt;
+    private LocalDateTime happenedAt;
 
     @OneToOne
     @JoinColumn(name = "internal_ship_task_id", nullable = false, updatable = false)

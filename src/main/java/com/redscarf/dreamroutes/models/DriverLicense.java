@@ -10,7 +10,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * dreamroutes.DriverLicense
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 18.02.2022|01:03
  * @Version DriverLicense: 1.0
  */

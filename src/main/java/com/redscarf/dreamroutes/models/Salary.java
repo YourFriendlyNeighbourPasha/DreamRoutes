@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * Created by IntelliJ IDEA.
  * dreamroutes.Salary
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 11.02.2022|02:16
  * @Version Salary: 1.0
  */

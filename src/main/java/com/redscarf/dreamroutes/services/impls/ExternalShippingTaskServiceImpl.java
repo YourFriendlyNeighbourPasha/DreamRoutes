@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by IntelliJ IDEA.
  * dreamroutes.ExternalShippingTaskServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|03:08
  * @Version ExternalShippingTaskServiceImpl: 1.0
  */

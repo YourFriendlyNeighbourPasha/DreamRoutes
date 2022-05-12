@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by IntelliJ IDEA.
  * dreamroutes.CityServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|03:14
  * @Version CityServiceImpl: 1.0
  */

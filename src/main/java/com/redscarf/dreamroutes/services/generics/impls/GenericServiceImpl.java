@@ -13,7 +13,7 @@ import java.util.UUID;
  * Created by IntelliJ IDEA.
  * dreamroutes.GenericServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|02:28
  * @Version GenericServiceImpl: 1.0
  */
@@ -53,8 +53,4 @@ public class GenericServiceImpl<T extends BaseModel> implements GenericService<T
         return repository.findById(id).isEmpty();
     }
 
-    @Override
-    public long count() {
-        return repository.findAll().spliterator().getExactSizeIfKnown();
-    }
 }

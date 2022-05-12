@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * Created by IntelliJ IDEA.
  * dreamroutes.ExternalAccident
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|00:58
  * @Version ExternalAccident: 1.0
  */

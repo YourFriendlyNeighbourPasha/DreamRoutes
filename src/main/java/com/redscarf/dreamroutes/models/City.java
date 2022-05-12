@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
  * Created by IntelliJ IDEA.
  * dreamroutes.City
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 18.02.2022|00:35
  * @Version City: 1.0
  */

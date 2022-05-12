@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by IntelliJ IDEA.
  * dreamroutes.InternalAccidentRepository
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|02:01
  * @Version InternalAccidentRepository: 1.0
  */

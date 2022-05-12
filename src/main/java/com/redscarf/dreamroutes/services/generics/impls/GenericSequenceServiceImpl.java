@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  * Created by IntelliJ IDEA.
  * dreamroutes.GenericSequenceServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|02:40
  * @Version GenericSequenceServiceImpl: 1.0
  */
@@ -52,8 +52,4 @@ public class GenericSequenceServiceImpl<T extends BaseSequenceModel> implements 
         return repository.findById(id).isEmpty();
     }
 
-    @Override
-    public long count() {
-        return repository.findAll().spliterator().getExactSizeIfKnown();
-    }
 }

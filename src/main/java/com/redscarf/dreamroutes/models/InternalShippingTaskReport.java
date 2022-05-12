@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * Created by IntelliJ IDEA.
  * dreamroutes.InternalShippingTaskReport
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 31.03.2022|22:40
  * @Version InternalShippingTaskReport: 1.0
  */

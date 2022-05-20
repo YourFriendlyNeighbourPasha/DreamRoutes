@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,10 +22,10 @@ public class SalaryDto {
     private String id;
 
     @NotBlank
-    private BigDecimal cost;
+    private String cost;
 
     @NotBlank
-    private BigDecimal bonusCost;
+    private String bonusCost;
 
     @NotBlank
     private String driverId;

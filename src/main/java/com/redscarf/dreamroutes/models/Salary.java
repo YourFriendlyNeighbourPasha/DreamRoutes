@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 /**
@@ -28,7 +28,7 @@ public class Salary extends BaseModel {
 
     private BigDecimal bonusCost;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "driver_id", updatable = false, nullable = false)
     private Driver driver;
 

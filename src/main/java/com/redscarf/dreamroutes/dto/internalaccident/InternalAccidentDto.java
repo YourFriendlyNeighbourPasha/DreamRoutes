@@ -27,6 +27,9 @@ public class InternalAccidentDto {
     private String description;
 
     @NotBlank
+    private String penalty;
+
+    @NotBlank
     @Size(min = 20, max = 30)
     private String happenedAt;
 

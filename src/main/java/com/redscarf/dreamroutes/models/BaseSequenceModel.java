@@ -3,6 +3,7 @@ package com.redscarf.dreamroutes.models;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ import java.io.Serializable;
 public abstract class BaseSequenceModel implements Serializable {
 
     @Id
+    @ReadOnlyProperty
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

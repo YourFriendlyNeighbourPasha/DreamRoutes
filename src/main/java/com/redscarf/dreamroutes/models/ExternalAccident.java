@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -27,6 +28,8 @@ public class ExternalAccident extends BaseModel {
     private String description;
 
     private LocalDateTime happenedAt;
+
+    private BigDecimal penalty;
 
     @OneToOne
     @JoinColumn(name = "external_ship_task_id", nullable = false, updatable = false)

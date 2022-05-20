@@ -28,6 +28,9 @@ public class InternalAccidentCreateDto {
     private String happenedAt;
 
     @NotBlank
+    private String penalty;
+
+    @NotBlank
     private String internalShippingTaskReportId;
 
 }

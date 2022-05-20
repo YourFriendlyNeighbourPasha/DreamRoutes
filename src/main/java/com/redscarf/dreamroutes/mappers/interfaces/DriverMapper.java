@@ -4,9 +4,8 @@ import com.redscarf.dreamroutes.dto.driver.DriverCreateDto;
 import com.redscarf.dreamroutes.dto.driver.DriverDto;
 import com.redscarf.dreamroutes.mappers.resolvers.UuidResolver;
 import com.redscarf.dreamroutes.models.Driver;
-import org.mapstruct.InjectionStrategy;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,7 +22,7 @@ public abstract class DriverMapper implements GenericMapper<Driver, DriverDto, D
     protected UuidResolver uuidResolver;
 
     @Override
-    @Mapping(target = "id", expression = "java(uuidResolver.fromUUID(entity.getId()))")
+    @Mapping(target = "id", ignore = true)
     public abstract DriverDto fromEntityToDto(Driver entity);
 
     @Override
@@ -44,6 +43,13 @@ public abstract class DriverMapper implements GenericMapper<Driver, DriverDto, D
     @Mapping(target = "driverLicense", ignore = true)
     public abstract Driver fromCreateDtoToEntity(DriverCreateDto createDto);
 
+    @AfterMapping
+    protected void resolveUUID(Driver sourceEntity, @MappingTarget DriverDto targetDto) {
+        targetDto.setId(uuidResolver.fromUUID(sourceEntity.getId()));
+    }
+
+
+    @Autowired
     public void setUuidResolver(UuidResolver uuidResolver) {
         this.uuidResolver = uuidResolver;
     }

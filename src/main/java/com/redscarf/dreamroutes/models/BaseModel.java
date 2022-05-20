@@ -3,12 +3,10 @@ package com.redscarf.dreamroutes.models;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Id;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -31,6 +29,7 @@ import java.util.UUID;
 public abstract class BaseModel implements Serializable {
 
     @Id
+    @ReadOnlyProperty
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected UUID id;
 

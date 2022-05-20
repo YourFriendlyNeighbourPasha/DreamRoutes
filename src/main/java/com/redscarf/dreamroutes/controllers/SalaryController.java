@@ -3,6 +3,7 @@ package com.redscarf.dreamroutes.controllers;
 import com.redscarf.dreamroutes.dto.salary.SalaryCreateDto;
 import com.redscarf.dreamroutes.dto.salary.SalaryDto;
 import com.redscarf.dreamroutes.mappers.interfaces.SalaryMapper;
+import com.redscarf.dreamroutes.mappers.resolvers.UuidResolver;
 import com.redscarf.dreamroutes.services.interfaces.SalaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 /**
@@ -28,6 +30,7 @@ public class SalaryController {
 
     private final SalaryService service;
     private final SalaryMapper mapper;
+    private final UuidResolver uuidResolver;
 
     @GetMapping(value = "/getAll")
     public ResponseEntity<Page<SalaryDto>> getAll(@RequestParam Integer pageNumber,
@@ -65,6 +68,13 @@ public class SalaryController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable String id) {
         return ResponseEntity.ok(service.deleteById(UUID.fromString(id)));
+    }
+
+    @GetMapping(value = "/calculate/{driverId}")
+    public ResponseEntity<SalaryDto> calculateSalaryByDriverId(@PathVariable @NotBlank String driverId) {
+        var calculation = service.calculateSalaryForDriverById(uuidResolver.fromString(driverId));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(calculation));
     }
 
 }

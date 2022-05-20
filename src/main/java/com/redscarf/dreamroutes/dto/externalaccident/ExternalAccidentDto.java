@@ -31,6 +31,9 @@ public class ExternalAccidentDto {
     private String happenedAt;
 
     @NotBlank
+    private String penalty;
+
+    @NotBlank
     private String externalShippingTaskReportId;
 
 }

@@ -21,6 +21,7 @@ repositories {
 ext {
     set('springCloudVersion', "2021.0.0")
     set('mapstructVersion', "1.4.2.Final")
+    set('springFoxSwaggerVersion', "3.0.0")
 }
 
 dependencies {
@@ -33,6 +34,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    implementation "io.springfox:springfox-boot-starter:${springFoxSwaggerVersion}"
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'

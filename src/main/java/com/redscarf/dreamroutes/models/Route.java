@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
  * Created by IntelliJ IDEA.
  * dreamroutes.Route
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 11.02.2022|01:12
  * @Version Route: 1.0
  */

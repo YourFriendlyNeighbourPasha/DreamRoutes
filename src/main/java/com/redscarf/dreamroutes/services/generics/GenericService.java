@@ -17,6 +17,4 @@ public interface GenericService<T> {
 
     boolean deleteById(UUID id);
 
-    long count();
-
 }

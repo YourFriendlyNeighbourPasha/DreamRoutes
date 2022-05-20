@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by IntelliJ IDEA.
  * dreamroutes.RegionServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|03:19
  * @Version RegionServiceImpl: 1.0
  */

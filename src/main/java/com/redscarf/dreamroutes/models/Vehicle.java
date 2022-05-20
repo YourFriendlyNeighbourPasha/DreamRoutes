@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * Created by IntelliJ IDEA.
  * dreamroutes.Vehicle
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 11.02.2022|01:26
  * @Version Vehicle: 1.0
  */

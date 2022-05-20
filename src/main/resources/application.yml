@@ -14,7 +14,10 @@ spring:
   flyway:
     user: postgres
     password: postgres
-    enabled: false
+    enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 server:
   port: 8082

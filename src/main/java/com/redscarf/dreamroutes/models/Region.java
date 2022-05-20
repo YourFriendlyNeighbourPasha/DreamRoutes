@@ -11,7 +11,7 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  * dreamroutes.Region
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 18.02.2022|00:35
  * @Version Region: 1.0
  */

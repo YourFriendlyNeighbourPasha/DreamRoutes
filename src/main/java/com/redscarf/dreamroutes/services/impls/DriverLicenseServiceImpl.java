@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by IntelliJ IDEA.
  * dreamroutes.DriverLicenseServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|02:58
  * @Version DriverLicenseServiceImpl: 1.0
  */

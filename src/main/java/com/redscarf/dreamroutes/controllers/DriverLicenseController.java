@@ -1,19 +1,23 @@
 package com.redscarf.dreamroutes.controllers;
 
-import com.redscarf.dreamroutes.models.DriverLicense;
+import com.redscarf.dreamroutes.dto.driverlicense.DriverLicenseCreateDto;
+import com.redscarf.dreamroutes.dto.driverlicense.DriverLicenseDto;
+import com.redscarf.dreamroutes.mappers.interfaces.DriverLicenseMapper;
 import com.redscarf.dreamroutes.services.interfaces.DriverLicenseService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
  * dreamroutes.DriverLicenseController
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 08.04.2022|03:23
  * @Version DriverLicenseController: 1.0
  */
@@ -21,35 +25,45 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/drives-licenses")
+@Api(value = "Driver License Controller")
 public class DriverLicenseController {
 
     private final DriverLicenseService service;
+    private final DriverLicenseMapper mapper;
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<Page<DriverLicense>> getAll(@RequestParam Integer pageNumber,
-                                                      @RequestParam Integer pageSize) {
-        return ResponseEntity.ok(service.findAll(pageNumber, pageSize));
+    public ResponseEntity<Page<DriverLicenseDto>> getAll(@RequestParam Integer pageNumber,
+                                                         @RequestParam Integer pageSize) {
+        var response = service.findAll(pageNumber, pageSize)
+                              .map(mapper::fromEntityToDto);
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/getById/{id}")
-    public ResponseEntity<DriverLicense> getById(@PathVariable String id) {
-        return ResponseEntity.ok(service.findById(UUID.fromString(id)));
+    public ResponseEntity<DriverLicenseDto> getById(@PathVariable String id) {
+        return ResponseEntity.ok(mapper.fromEntityToDto(service.findById(UUID.fromString(id))));
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<DriverLicense> create(@RequestBody DriverLicense driverLicense) {
-        return ResponseEntity.ok(service.save(driverLicense));
+    public ResponseEntity<DriverLicenseDto> create(
+            @RequestBody @Valid DriverLicenseCreateDto driverLicense) {
+        var saved = service.save(mapper.fromCreateDtoToEntity(driverLicense));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(saved));
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<DriverLicense> update(
-            @RequestBody DriverLicense driverLicense) {
-        return ResponseEntity.ok(service.save(driverLicense));
+    public ResponseEntity<DriverLicenseDto> update(
+            @RequestBody @Valid DriverLicenseDto driverLicense) {
+        var updated = service.save(mapper.fromDtoToEntity(driverLicense));
+
+        return ResponseEntity.ok(mapper.fromEntityToDto(updated));
     }
 
     @DeleteMapping(value = "/delete")
-    public ResponseEntity<Boolean> delete(@RequestBody DriverLicense driverLicense) {
-        return ResponseEntity.ok(service.delete(driverLicense));
+    public ResponseEntity<Boolean> delete(@RequestBody @Valid DriverLicenseDto driverLicense) {
+        return ResponseEntity.ok(service.delete(mapper.fromDtoToEntity(driverLicense)));
     }
 
     @DeleteMapping(value = "/delete/{id}")
@@ -57,9 +71,6 @@ public class DriverLicenseController {
         return ResponseEntity.ok(service.deleteById(UUID.fromString(id)));
     }
 
-    @GetMapping(value = "/count")
-    public ResponseEntity<Long> count() {
-        return ResponseEntity.ok(service.count());
-    }
+
 
 }

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by IntelliJ IDEA.
  * dreamroutes.FreightServiceImpl
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 01.04.2022|03:09
  * @Version FreightServiceImpl: 1.0
  */

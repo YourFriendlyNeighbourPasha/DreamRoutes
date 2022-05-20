@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * Created by IntelliJ IDEA.
  * dreamroutes.Driver
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 11.02.2022|01:26
  * @Version Driver: 1.0
  */

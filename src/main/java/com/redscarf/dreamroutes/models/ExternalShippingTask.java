@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * Created by IntelliJ IDEA.
  * dreamroutes.ShippingTask
  *
- * @Autor: Pavel Shcherbatyi
+ * @Author: Pavel Shcherbatyi
  * @DateTime: 16.02.2022|21:41
  * @Version ExternalShippingTask: 1.0
  */

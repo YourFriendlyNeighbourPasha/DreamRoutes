@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.vehicle.VehicleCreateDto;
 import com.redscarf.dreamroutes.dto.vehicle.VehicleDto;
 import com.redscarf.dreamroutes.mappers.interfaces.VehicleMapper;
 import com.redscarf.dreamroutes.services.interfaces.VehicleService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/vehicles")
+@Api(value = "Vehicle Controller")
 public class VehicleController {
 
     private final VehicleService service;

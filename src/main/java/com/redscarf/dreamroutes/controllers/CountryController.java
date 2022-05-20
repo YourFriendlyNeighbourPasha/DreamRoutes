@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.country.CountryCreateDto;
 import com.redscarf.dreamroutes.dto.country.CountryDto;
 import com.redscarf.dreamroutes.mappers.interfaces.CountryMapper;
 import com.redscarf.dreamroutes.services.interfaces.sequences.CountryService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/countries")
+@Api(value = "Country Controller")
 public class CountryController {
 
     private final CountryService service;

@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.region.RegionCreateDto;
 import com.redscarf.dreamroutes.dto.region.RegionDto;
 import com.redscarf.dreamroutes.mappers.interfaces.RegionMapper;
 import com.redscarf.dreamroutes.services.interfaces.sequences.RegionService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/regions")
+@Api(value = "Region Controller")
 public class RegionController {
 
     private final RegionService service;

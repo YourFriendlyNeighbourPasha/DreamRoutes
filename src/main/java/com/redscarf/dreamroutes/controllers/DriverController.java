@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.driver.DriverCreateDto;
 import com.redscarf.dreamroutes.dto.driver.DriverDto;
 import com.redscarf.dreamroutes.mappers.interfaces.DriverMapper;
 import com.redscarf.dreamroutes.services.interfaces.DriverService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/drivers")
+@Api(value = "Driver Controller")
 public class DriverController {
 
     private final DriverService service;

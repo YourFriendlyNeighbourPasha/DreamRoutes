@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.freight.FreightCreateDto;
 import com.redscarf.dreamroutes.dto.freight.FreightDto;
 import com.redscarf.dreamroutes.mappers.interfaces.FreightMapper;
 import com.redscarf.dreamroutes.services.interfaces.FreightService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/freights")
+@Api(value = "Freight Controller")
 public class FreightController {
 
     private final FreightService service;

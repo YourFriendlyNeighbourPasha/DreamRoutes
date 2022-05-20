@@ -77,7 +77,11 @@ public class SalaryServiceImpl extends GenericServiceImpl<Salary>
         BigDecimal bonusSalary = new BigDecimal("0.0");
 
         // Calculating the amount of time
-        if (internalShippingTaskList.size() > 0 && internalShippingTaskReports.size() > 0) {
+        if (!internalShippingTaskList.isEmpty() &&
+                !internalShippingTaskReports.isEmpty() &&
+                !internalShippingTaskList.contains(null) &&
+                !internalShippingTaskReports.contains(null)
+        ) {
             for (var ist : internalShippingTaskList) {
                 var istReport = internalShippingTaskReports
                         .stream()
@@ -93,29 +97,33 @@ public class SalaryServiceImpl extends GenericServiceImpl<Salary>
                 BigDecimal freightRate = ist.getFreight().getType().getRate();
                 BigDecimal hourlyRate = new BigDecimal(expectedTime / 3600);
 
-                if (actualTime > expectedTime) {
+                if (expectedTime > actualTime) {
                     finalSalary = finalSalary.add(hourlyRate).multiply(routeRate);
                     finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
-                    bonusSalary = bonusSalary.add(new BigDecimal((actualTime - expectedTime) / 3600))
+                    bonusSalary = bonusSalary.add(new BigDecimal((expectedTime - actualTime) / 3600))
                                              .multiply(routeRate);
                     bonusSalary = bonusSalary.add(bonusSalary.multiply(freightRate));
                 }
 
-                if (actualTime == expectedTime) {
+                if (expectedTime == actualTime) {
                     finalSalary = finalSalary.add(hourlyRate).multiply(routeRate);
                     finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
                 }
 
-                if (actualTime < expectedTime) {
-                    if (expectedTime - actualTime >= 3600) {
+                if (expectedTime < actualTime) {
+                    if (actualTime - expectedTime >= 3600) {
                         finalSalary = finalSalary.add(hourlyRate);
-                        finalSalary = finalSalary.subtract(new BigDecimal((expectedTime - actualTime) / 3600))
+                        finalSalary = finalSalary.subtract(new BigDecimal((actualTime - expectedTime) / 3600))
                                                  .multiply(routeRate);
                         finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
+                    } else {
+                        finalSalary = finalSalary.add(hourlyRate);
+                        finalSalary = finalSalary.add(finalSalary.multiply(freightRate))
+                                                 .multiply(routeRate);
                     }
                 }
 
-                if (internalAccidents.size() > 0) {
+                if (!internalAccidents.isEmpty() && !internalAccidents.contains(null)) {
                     var internalAccident = internalAccidents
                             .stream()
                             .filter(el -> el.getInternalShippingTaskReport().getId() == istReport.getId())
@@ -133,6 +141,7 @@ public class SalaryServiceImpl extends GenericServiceImpl<Salary>
         //#region Calculate salary by external tasks
         // Find all external shipping tasks connected with driver
         var externalShippingTaskList = externalShippingTaskRepository.findByDriverId(driverId);
+        externalShippingTaskList.addAll(externalShippingTaskRepository.findByExtraDriverId(driverId));
 
         var externalShippingTaskReports = externalShippingTaskList
                 .stream()
@@ -147,7 +156,11 @@ public class SalaryServiceImpl extends GenericServiceImpl<Salary>
                 .collect(Collectors.toList());
 
         // Calculating the amount of time
-        if (externalShippingTaskList.size() > 0 && externalShippingTaskReports.size() > 0) {
+        if (!externalShippingTaskList.isEmpty() &&
+                !externalShippingTaskReports.isEmpty() &&
+                !externalShippingTaskList.contains(null) &&
+                !externalShippingTaskReports.contains(null)
+        ) {
             for (var est : externalShippingTaskList) {
                 var estReport = externalShippingTaskReports
                         .stream()
@@ -163,29 +176,29 @@ public class SalaryServiceImpl extends GenericServiceImpl<Salary>
                 BigDecimal freightRate = est.getFreight().getType().getRate();
                 BigDecimal hourlyRate = new BigDecimal(expectedTime / 3600);
 
-                if (actualTime > expectedTime) {
+                if (expectedTime > actualTime) {
                     finalSalary = finalSalary.add(hourlyRate).multiply(routeRate);
                     finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
-                    bonusSalary = bonusSalary.add(new BigDecimal((actualTime - expectedTime) / 3600))
+                    bonusSalary = bonusSalary.add(new BigDecimal((expectedTime - actualTime) / 3600))
                                              .multiply(routeRate);
                     bonusSalary = bonusSalary.add(bonusSalary.multiply(freightRate));
                 }
 
-                if (actualTime == expectedTime) {
+                if (expectedTime == actualTime) {
                     finalSalary = finalSalary.add(hourlyRate).multiply(routeRate);
                     finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
                 }
 
-                if (actualTime < expectedTime) {
+                if (expectedTime < actualTime) {
                     if (expectedTime - actualTime >= 3600) {
                         finalSalary = finalSalary.add(hourlyRate);
-                        finalSalary = finalSalary.subtract(new BigDecimal((expectedTime - actualTime) / 3600))
+                        finalSalary = finalSalary.subtract(new BigDecimal((actualTime - expectedTime) / 3600))
                                                  .multiply(routeRate);
                         finalSalary = finalSalary.add(finalSalary.multiply(freightRate));
                     }
                 }
 
-                if (internalAccidents.size() > 0) {
+                if (!externalAccidents.isEmpty() && !externalAccidents.contains(null)) {
                     var externalAccident = externalAccidents
                             .stream()
                             .filter(el -> el.getExternalShippingTaskReport().getId() == estReport.getId())

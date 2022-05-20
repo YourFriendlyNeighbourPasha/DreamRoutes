@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.externalaccident.ExternalAccidentCreateDto;
 import com.redscarf.dreamroutes.dto.externalaccident.ExternalAccidentDto;
 import com.redscarf.dreamroutes.mappers.interfaces.ExternalAccidentMapper;
 import com.redscarf.dreamroutes.services.interfaces.ExternalAccidentService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/external-accidents")
+@Api(value = "External Accident Controller")
 public class ExternalAccidentController {
 
     private final ExternalAccidentService service;

@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.internalshippingtaskreport.InternalShippingT
 import com.redscarf.dreamroutes.dto.internalshippingtaskreport.InternalShippingTaskReportDto;
 import com.redscarf.dreamroutes.mappers.interfaces.InternalShippingTaskReportMapper;
 import com.redscarf.dreamroutes.services.interfaces.InternalShippingTaskReportService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/internal-shipping-task-reports")
+@Api(value = "Internal Shipping Task Report Controller")
 public class InternalShippingTaskReportController {
 
     private final InternalShippingTaskReportService service;

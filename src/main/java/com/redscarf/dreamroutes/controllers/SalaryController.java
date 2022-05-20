@@ -5,6 +5,7 @@ import com.redscarf.dreamroutes.dto.salary.SalaryDto;
 import com.redscarf.dreamroutes.mappers.interfaces.SalaryMapper;
 import com.redscarf.dreamroutes.mappers.resolvers.UuidResolver;
 import com.redscarf.dreamroutes.services.interfaces.SalaryService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/salaries")
+@Api(value = "Salary Controller")
 public class SalaryController {
 
     private final SalaryService service;

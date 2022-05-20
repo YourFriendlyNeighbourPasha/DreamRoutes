@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.internalaccident.InternalAccidentCreateDto;
 import com.redscarf.dreamroutes.dto.internalaccident.InternalAccidentDto;
 import com.redscarf.dreamroutes.mappers.interfaces.InternalAccidentMapper;
 import com.redscarf.dreamroutes.services.interfaces.InternalAccidentService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/internal-accidents")
+@Api(value = "Internal Accident Controller")
 public class InternalAccidentController {
 
     private final InternalAccidentService service;

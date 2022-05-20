@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.externalshippingtask.ExternalShippingTaskCre
 import com.redscarf.dreamroutes.dto.externalshippingtask.ExternalShippingTaskDto;
 import com.redscarf.dreamroutes.mappers.interfaces.ExternalShippingTaskMapper;
 import com.redscarf.dreamroutes.services.interfaces.ExternalShippingTaskService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/external-shipping-tasks")
+@Api(value = "External Shipping Task Controller")
 public class ExternalShippingTaskController {
 
     private final ExternalShippingTaskService service;

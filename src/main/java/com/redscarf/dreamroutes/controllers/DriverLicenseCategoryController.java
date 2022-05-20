@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.driverlicensecategory.DriverLicenseCategoryC
 import com.redscarf.dreamroutes.dto.driverlicensecategory.DriverLicenseCategoryDto;
 import com.redscarf.dreamroutes.mappers.interfaces.DriverLicenseCategoryMapper;
 import com.redscarf.dreamroutes.services.interfaces.sequences.DriverLicenseCategoryService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/driver-license-categories")
+@Api(value = "Driver License Category Controller")
 public class DriverLicenseCategoryController {
 
     private final DriverLicenseCategoryService service;

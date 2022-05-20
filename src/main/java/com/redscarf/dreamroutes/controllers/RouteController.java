@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.route.RouteCreateDto;
 import com.redscarf.dreamroutes.dto.route.RouteDto;
 import com.redscarf.dreamroutes.mappers.interfaces.RouteMapper;
 import com.redscarf.dreamroutes.services.interfaces.RouteService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/routes")
+@Api(value = "Route Controller")
 public class RouteController {
 
     private final RouteService service;

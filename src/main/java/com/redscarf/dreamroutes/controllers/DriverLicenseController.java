@@ -4,6 +4,7 @@ import com.redscarf.dreamroutes.dto.driverlicense.DriverLicenseCreateDto;
 import com.redscarf.dreamroutes.dto.driverlicense.DriverLicenseDto;
 import com.redscarf.dreamroutes.mappers.interfaces.DriverLicenseMapper;
 import com.redscarf.dreamroutes.services.interfaces.DriverLicenseService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/drives-licenses")
+@Api(value = "Driver License Controller")
 public class DriverLicenseController {
 
     private final DriverLicenseService service;
